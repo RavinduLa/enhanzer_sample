@@ -1,3 +1,9 @@
+/*
+* Created by Ravindu Wataketiya
+* User Location
+* Model for user location, extends UserLocationEntity
+* */
+
 import '../../domain/entity/user_location_entity.dart';
 
 class UserLocation extends UserLocationEntity {

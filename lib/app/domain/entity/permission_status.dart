@@ -1,3 +1,9 @@
+/*
+* Created by Ravindu Wataketiya
+* Permission status
+* Enumeration to handle permission status
+* */
+
 enum PermissionStatus { ENABLE }
 
 final permissionStatusValues = EnumValues({"Enable": PermissionStatus.ENABLE});

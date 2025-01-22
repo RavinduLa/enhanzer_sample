@@ -1,3 +1,10 @@
+/*
+* Created by Ravindu Wataketiya
+* User Permission
+* Model for user permission, extends UserPermissionEntity
+* */
+
+
 import '../../domain/entity/permission_status.dart';
 import '../../domain/entity/user_permission_entity.dart';
 

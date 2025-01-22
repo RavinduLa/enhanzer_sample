@@ -1,3 +1,9 @@
+/*
+* Created by Ravindu Wataketiya
+* Login Request
+* Model for Login Request
+* */
+
 import 'dart:convert';
 
 import 'api_body.dart';

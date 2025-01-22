@@ -1,3 +1,9 @@
+/*
+* Created by Ravindu Wataketiya
+* Login Response
+* Response model for login
+* */
+
 import 'response_body.dart';
 
 import 'dart:convert';

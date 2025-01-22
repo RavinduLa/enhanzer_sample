@@ -1,3 +1,10 @@
+/*
+* Created by Ravindu Wataketiya
+* Response body
+* Model for response body for login.
+* */
+
+
 import 'user_location.dart';
 import 'user_permission.dart';
 

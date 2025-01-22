@@ -1,3 +1,9 @@
+/*
+* Created by Ravindu Wataketiya
+* API Body
+* API Body model fo login request
+* */
+
 class ApiBody {
   String uniqueId;
   String pw;
