@@ -17,13 +17,13 @@ class LoginResponse {
   int statusCode;
   String syncTime;
   String message;
-  List<ResponseBody> responseBody;
+  List<ResponseBody>? responseBody;
 
   LoginResponse({
     required this.statusCode,
     required this.syncTime,
     required this.message,
-    required this.responseBody,
+    this.responseBody,
   });
 
   LoginResponse copyWith({
@@ -43,15 +43,18 @@ class LoginResponse {
         statusCode: json["Status_Code"],
         syncTime: json["Sync_Time"],
         message: json["Message"],
-        responseBody: List<ResponseBody>.from(
-            json["Response_Body"].map((x) => ResponseBody.fromJson(x))),
+        responseBody: json["Response_Body"] != null
+            ? List<ResponseBody>.from(
+                json["Response_Body"].map((x) => ResponseBody.fromJson(x)))
+            : null,
       );
 
   Map<String, dynamic> toJson() => {
         "Status_Code": statusCode,
         "Sync_Time": syncTime,
         "Message": message,
-        "Response_Body":
-            List<dynamic>.from(responseBody.map((x) => x.toJson())),
+        "Response_Body": responseBody != null
+            ? List<dynamic>.from(responseBody!.map((x) => x.toJson()))
+            : null,
       };
 }
