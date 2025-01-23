@@ -1,4 +1,8 @@
-enum LoginExceptionType { invalidCredentials, unknown }
+enum LoginExceptionType {
+  invalidCredentials,
+  serverResponseError,
+  unknown,
+}
 
 class LoginException implements Exception {
   LoginException({

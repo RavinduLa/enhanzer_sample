@@ -40,24 +40,34 @@ class LoginRepositoryImpl implements LoginRepository {
     try {
       LoginResponse response = await loginRestClient.login(loginRequest);
       if (response.statusCode == 200) {
-        ResponseBody responseBody = response.responseBody.first;
-        if (responseBody.companyCode == null) {
-          return Left(
-            LoginException(
-              errorType: LoginExceptionType.invalidCredentials,
-            ),
-          );
+        if (response.responseBody != null) {
+          ResponseBody responseBody = response.responseBody!.first;
+          if (responseBody.docMessage == "Invalid Password") {
+            return Left(
+              LoginException(
+                errorType: LoginExceptionType.invalidCredentials,
+              ),
+            );
+          } else {
+            return Right(true);
+          }
         }
-        return Right(true);
+      } else if (response.statusCode == 401) {
+        //Unauthorized request
+        return Left(
+          LoginException(
+            errorType: LoginExceptionType.invalidCredentials,
+          ),
+        );
       } else {
         return Left(
           LoginException(
-            errorType: LoginExceptionType.unknown,
+            errorType: LoginExceptionType.serverResponseError,
             message: "Error in server response.",
           ),
         );
       }
-    } catch (e) {
+    } on LoginException catch (e) {
       return Left(
         LoginException(
           errorType: LoginExceptionType.unknown,
@@ -65,5 +75,11 @@ class LoginRepositoryImpl implements LoginRepository {
         ),
       );
     }
+    return Left(
+      LoginException(
+        errorType: LoginExceptionType.unknown,
+        message: "Unknown error",
+      ),
+    );
   }
 }

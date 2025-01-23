@@ -1,4 +1,5 @@
 import 'package:either_dart/either.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -68,16 +69,25 @@ class LoginController extends GetxController {
 
   //Handle the error scenarios for login
   void _handleLoginError(LoginException exception) async {
+    if (kDebugMode) {
+      print("Login Error Message in controller: ${exception.message}");
+    }
     if (exception.errorType == LoginExceptionType.invalidCredentials) {
       _showFailureSnackBar(
         "Invalid credentials",
         "Either your username or password is invalid",
         null,
       );
+    } else if (exception.errorType == LoginExceptionType.serverResponseError) {
+      _showFailureSnackBar(
+        "Server Error",
+        "A server error has occurred. Make sure you are connected to the internet.",
+        null,
+      );
     } else {
       _showFailureSnackBar(
         "Error",
-        "An unknown error has occurred. Please try again and make sure you are connected to the internet.",
+        "An unknown error has occurred. Please try again.",
         null,
       );
     }
