@@ -16,7 +16,7 @@ import '../remote/login_rest_client.dart';
 import '../../app_commons/exceptions/login_exception.dart';
 import '../../domain/repository/login_repository.dart';
 
-class LoginRepositoryImpl implements LoginRepository {
+class LoginRepositoryImpl extends GetxService implements LoginRepository {
   final LoginRestClient loginRestClient = Get.find<LoginRestClient>();
 
   @override
