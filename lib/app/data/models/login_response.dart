@@ -15,13 +15,13 @@ String loginResponseToJson(LoginResponse data) => json.encode(data.toJson());
 
 class LoginResponse {
   int statusCode;
-  String syncTime;
+  String? syncTime;
   String message;
   List<ResponseBody>? responseBody;
 
   LoginResponse({
     required this.statusCode,
-    required this.syncTime,
+    this.syncTime,
     required this.message,
     this.responseBody,
   });
